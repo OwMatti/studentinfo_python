@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+	{% with messages = get_flashed_messages()%}
+		{% if messages%}
+			{% for message in messages %}
+				<div class="w3-panel w3-highway-orange  w3-padding">{{ message.upper() }}</div>
+			{% endfor %}
+		{% endif %}
+	{% endwith%}
+    
+	<form method="POST" action="{{ url_for('login') }}">
+        <div class="w3-row-padding" style="min-height: 80vh; display: flex; justify-content: center; align-items: center;">
+            <div class="w3-quarter">
+                <div class="w3-container w3-padding w3-round w3-card-2">
+                    <p>
+                        <input type="text" name="username" class="w3-input w3-border" placeholder="Username" required>
+                    </p>
+                    <p>
+                        <input type="password" name="password" class="w3-input w3-border" placeholder="Password" required>
+                    </p>
+                    <button type="submit" class="w3-button w3-highway-blue w3-right w3-input">LOGIN</button>
+                </div>
+            </div>
+        </div>
+    </form>
+	
+{% endblock %}
